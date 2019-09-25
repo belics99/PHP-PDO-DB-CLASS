@@ -47,7 +47,7 @@ class DB
 	//$fetchType = 0 == fetchColumn()
 	//$fetchType = 1 == fetch()
 	//$fetchType = 2 == fetchAll()
-	public function query($queryType, $sql, $params = [], $fetchType = null){
+	public function query($queryType, $sql, $params = [], $fetchType = 0){
 		if ( count($params) ){
 			$this->query = $this->pdo->prepare($sql);
 			$this->query->execute($params);
