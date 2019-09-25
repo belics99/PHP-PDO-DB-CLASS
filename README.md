@@ -9,5 +9,33 @@
 //$fetchType = 0 == fetchColumn()
 //$fetchType = 1 == fetch()
 //$fetchType = 2 == fetchAll()
-public function query($queryType, $sql, $params = [], $fetchType = null)
+public function query($queryType, $sql, $params = [], $fetchType = null){
+  ...
+}
+```
+## Examples
+```php
+$_db = DB::getInstance();
+```
+
+### SELECT
+```php
+$sql = "SELECT * FROM USER WHERE HAIR_COLOR = ? AND NAME = ?";
+$params = ["Black", "Strahinja"];
+$_db->query(0, $sql, $params, 2);
+
+/*
+Now you'll get all users with name Strahinja and hair color black
+query will return two dimensional array ( [][] )
+so you can loop through it with foreach loop.
+If you put 1 instead 2 you'll get only 1 row,  just array ( [] )
+$_db->query(0, $sql, $params, 1);
+*/
+```
+
+### UPDATE
+```php
+$sql = "UPDATE USER SET HAIR_COLOR = ?, NAME = ? WHERE ID = ?";
+$params = ["Black", "Strahinja", 1];
+$_db->query(1, $sql, $params);
 ```
