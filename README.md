@@ -15,15 +15,19 @@ public function query($queryType, $sql, $params = [], $fetchType = null){
 ```
 ## Examples
 ```php
+//get instance, you need to make object first so you can use DB query method
 $_db = DB::getInstance();
 ```
 
 ### SELECT
 ```php
+$sql = "SELECT TOP 1 ID FROM USER"
+$_db->query(0, $sql);
+//Now you'll get only 1 column, just ID value for TOP 1 FROM USER table 
+
 $sql = "SELECT * FROM USER WHERE HAIR_COLOR = ? AND NAME = ?";
 $params = ["Black", "Strahinja"];
 $_db->query(0, $sql, $params, 2);
-
 /*
 Now you'll get all users with name Strahinja and hair color black
 query will return two dimensional array ( [][] )
