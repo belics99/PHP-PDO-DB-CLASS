@@ -10,12 +10,12 @@ class DB
 	const dbname = '';
 	const charset = '';
 
-	private static $_instance= null;
+	private static $_instance = null;
 	private $pdo, $query;
 	private $options = [
-		PDO::ATTR_ERRMODE				=> PDO::ERRMODE_EXCEPTION,
+		PDO::ATTR_ERRMODE		=> PDO::ERRMODE_EXCEPTION,
 		PDO::ATTR_DEFAULT_FETCH_MODE	=> PDO::FETCH_ASSOC,
-		PDO::ATTR_EMULATE_PREPARES		=> false
+		PDO::ATTR_EMULATE_PREPARES	=> false
 	]; 
 
 	function __construct(){
