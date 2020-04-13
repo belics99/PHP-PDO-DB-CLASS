@@ -9,7 +9,7 @@
 //$fetchType = 0 == fetchColumn()
 //$fetchType = 1 == fetch()
 //$fetchType = 2 == fetchAll()
-public function query($queryType, $sql, $params = [], $fetchType = 0){
+public function query($queryType, $sql, $fetchType = 0, $params = []){
   ...
 }
 ```
@@ -27,13 +27,13 @@ $_db->query(0, $sql);
 
 $sql = "SELECT * FROM USER WHERE HAIR_COLOR = ? AND NAME = ?";
 $params = ["Black", "Strahinja"];
-$_db->query(0, $sql, $params, 2);
+$_db->query(0, $sql, 2, $params);
 /*
 Now you'll get all users with name Strahinja and hair color black
 query will return two dimensional array ( [][] )
 so you can loop through it with foreach loop.
 If you put 1 instead 2 you'll get only 1 row,  just array ( [] )
-$_db->query(0, $sql, $params, 1);
+$_db->query(0, $sql, 1, $params);
 */
 ```
 
@@ -41,5 +41,5 @@ $_db->query(0, $sql, $params, 1);
 ```php
 $sql = "UPDATE USER SET HAIR_COLOR = ?, NAME = ? WHERE ID = ?";
 $params = ["Black", "Strahinja", 1];
-$_db->query(1, $sql, $params);
+$_db->query(1, $sql, 0, $params);
 ```
