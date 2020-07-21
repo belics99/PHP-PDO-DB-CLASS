@@ -9,6 +9,8 @@ class DB
 	const pass = '';
 	const dbname = '';
 	const charset = '';
+	
+	protected $lastInsertedID;
 
 	private static $_instance = null;
 	private $pdo, $query;
@@ -40,7 +42,8 @@ class DB
 
 	/*----- QueryType -----*/
 	//$queryType = 0 == SELECT
-	//$queryType = 1 == INSERT,UPDATE,DELETE,DROP
+	//$queryType = 1 == INSERT
+	//$queryType = 2 == UPDATE,DELETE,DROP
 	/*----- FetchType -----*/
 	//$fetchType = 0 == fetchColumn()
 	//$fetchType = 1 == fetch()
@@ -49,9 +52,10 @@ class DB
 		if ( count($params) ){
 			$this->query = $this->pdo->prepare($sql);
 			$this->query->execute($params);
+			$this->$lastInsertedID = ($queryType === 1)? $this->pdo->lastInsertId() : null;
 		}
 		else $this->query = $this->pdo->query($sql);
-		if ( !$queryType ){
+		if ( $queryType > 0 ){
 			switch ( $fetchType ) {
 				case 0:
 					return $this->query->fetchColumn();
