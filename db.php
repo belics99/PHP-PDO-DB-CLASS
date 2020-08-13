@@ -1,14 +1,40 @@
 <?php
-/**
-* 
-*/
 class DB 
-{
+{	
 	const host = '';
 	const user = '';
 	const pass = '';
 	const dbname = '';
 	const charset = '';
+	
+	/*
+		Cubrid
+		FreeTDS / Microsoft SQL Server / Sybase
+		Firebird
+		IBM DB2
+		IBM Informix Dynamic Server
+		MySQL 3.x/4.x/5.x
+		Oracle Call Interface
+		ODBC v3 (IBM DB2, unixODBC and win32 ODBC)
+		PostgreSQL
+		SQLite 3 and SQLite 2
+		Microsoft SQL Server / SQL Azure
+		4D	
+	*/
+	const dbTech = [
+		0 => 'curbid',
+		1 => 'dblib',
+		2 => 'firebird',
+		3 => 'ibm',
+		4 => 'informix',
+		5 => 'mysql',
+		6 => 'oci',
+		7 => 'odbc'
+		8 => 'pgsql'
+		9 => 'sqlite'
+		10 => 'sqlsrv'
+		11 => '4d'
+	];
 	
 	protected $lastInsertedID;
 
@@ -26,7 +52,7 @@ class DB
 
 	private function connect()
 	{
-		$dsn = "mysql:host=".self::host.";dbname=".self::dbname.";charset=".self::charset;
+		$dsn = self::dbTech[5] . ":host=" . self::host . ";dbname=" . self::dbname . ";charset=" . self::charset;
 		try {
 			$this->pdo = new PDO($dsn, self::user, self::pass, $this->options);
 		} catch (\PDOException $e) {
