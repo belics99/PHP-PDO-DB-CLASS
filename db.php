@@ -29,10 +29,10 @@ class DB
 		4 => 'informix',
 		5 => 'mysql',
 		6 => 'oci',
-		7 => 'odbc'
-		8 => 'pgsql'
-		9 => 'sqlite'
-		10 => 'sqlsrv'
+		7 => 'odbc',
+		8 => 'pgsql',
+		9 => 'sqlite',
+		10 => 'sqlsrv',
 		11 => '4d'
 	];
 	
