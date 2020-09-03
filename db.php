@@ -36,7 +36,7 @@ class DB
 		11 => '4d'
 	];
 	
-	protected $lastInsertedID;
+	protected static $lastInsertedID;
 
 	private static $_instance = null;
 	private $pdo, $query;
@@ -78,7 +78,7 @@ class DB
 		if ( count($params) ){
 			$this->query = $this->pdo->prepare($sql);
 			$this->query->execute($params);
-			$this->$lastInsertedID = ($queryType === 1)? $this->pdo->lastInsertId() : null;
+			self::$lastInsertedID = ($queryType === 1)? $this->pdo->lastInsertId() : null;
 		}
 		else $this->query = $this->pdo->query($sql);
 		if ( $queryType > 0 ){
