@@ -4,7 +4,8 @@
 ```php
 /*----- QueryType -----*/
 //$queryType = 0 == SELECT
-//$queryType = 1 == INSERT,UPDATE,DELETE,DROP
+//$queryType = 1 == INSERT
+//$queryType = 2 == UPDATE,DELETE,DROP
 /*----- FetchType -----*/
 //$fetchType = 0 == fetchColumn()
 //$fetchType = 1 == fetch()
@@ -41,5 +42,5 @@ $_db->query(0, $sql, 1, $params);
 ```php
 $sql = "UPDATE USER SET HAIR_COLOR = ?, NAME = ? WHERE ID = ?";
 $params = ["Black", "Strahinja", 1];
-$_db->query(1, $sql, 0, $params);
+$_db->query(2, $sql, 0, $params);
 ```
