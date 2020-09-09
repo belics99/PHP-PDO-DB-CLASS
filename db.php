@@ -81,7 +81,7 @@ class DB
 			self::$lastInsertedID = ($queryType === 1)? $this->pdo->lastInsertId() : null;
 		}
 		else $this->query = $this->pdo->query($sql);
-		if ( $queryType > 0 ){
+		if ( $queryType === 0 ){
 			switch ( $fetchType ) {
 				case 0:
 					return $this->query->fetchColumn();
